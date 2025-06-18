@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      /* Hides the floating chat launcher button */
+      #zsiq_float {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      window.$zoho = window.$zoho || {};
+      $zoho.salesiq = {
+        ready: function() {
+          // Open chat automatically
+          $zoho.salesiq.visitor.trigger('chat');
+
+          // Hide the floating button after widget loads
+          const hideLauncher = () => {
+            const launcher = document.getElementById('zsiq_float');
+            if (launcher) {
+              launcher.style.display = 'none';
+            } else {
+              // Retry until the launcher is available
+              setTimeout(hideLauncher, 500);
+            }
+          };
+          hideLauncher();
+        }
+      };
+    </script>
+    <script id="zsiqscript"
+      src="https://salesiq.zohopublic.eu/widget?wc=siq2edfadf216a22d33baeb5f5fae01a3c5ecd8283e9f4bf8ca562aa0c2c2c5bf1c6d91d5e46f2773b4dbe68455c78f462a"
+      defer>
+    </script>
+  </body>
+</html>
