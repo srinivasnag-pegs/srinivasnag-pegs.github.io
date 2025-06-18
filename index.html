@@ -17,17 +17,7 @@
           // Open chat automatically
           $zoho.salesiq.visitor.trigger('chat');
 
-          // Hide the floating button after widget loads
-          const hideLauncher = () => {
-            const launcher = document.getElementById('zsiq_float');
-            if (launcher) {
-              launcher.style.display = 'none';
-            } else {
-              // Retry until the launcher is available
-              setTimeout(hideLauncher, 500);
-            }
-          };
-          hideLauncher();
+          
         }
       };
     </script>
