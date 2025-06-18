@@ -1,27 +1,43 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Chat</title>
   <style>
-  #zsiq_float {
-display: none !important;
-}
+    #zsiq_float {
+      display: none !important;
+    }
   </style>
-     <script>
-     	window.$zoho=window.$zoho || {};
-     	$zoho.salesiq={
-        	values: {},
-     		ready:function(){
-            	$zoho.salesiq.floatwindow.visible("show");
-                
-                $zoho.salesiq.floatwindow.close(function()
-   				{
-     				$zoho.salesiq.floatwindow.visible("show");
-   				});
-     		}
-       	}
-       </script>
-       <script id="zsiqscript" src="https://salesiq.zohopublic.eu/widget?wc=siq2edfadf216a22d33baeb5f5fae01a3c5ecd8283e9f4bf8ca562aa0c2c2c5bf1c6d91d5e46f2773b4dbe68455c78f462a" defer>
-       </script> 
-  </head>
-  <body></body>
+  <script>
+    window.$zoho = window.$zoho || {};
+    $zoho.salesiq = {
+      values: {},
+      ready: function () {
+        $zoho.salesiq.floatwindow.visible("show");
+        $zoho.salesiq.floatwindow.close(function () {
+          $zoho.salesiq.floatwindow.visible("show");
+        });
+
+        const observer = new MutationObserver(function () {
+          const chatWindow = document.querySelector('.zsiq_flt_rel');
+          if (chatWindow) {
+            chatWindow.style.position = 'fixed';
+            chatWindow.style.top = '50%';
+            chatWindow.style.left = '50%';
+            chatWindow.style.transform = 'translate(-50%, -50%)';
+            chatWindow.style.margin = '0';
+            chatWindow.style.zIndex = '9999';
+            observer.disconnect();
+          }
+        });
+
+        observer.observe(document.body, { childList: true, subtree: true });
+      }
+    };
+  </script>
+  <script id="zsiqscript" src="https://salesiq.zohopublic.eu/widget?wc=siq2edfadf216a22d33baeb5f5fae01a3c5ecd8283e9f4bf8ca562aa0c2c2c5bf1c6d91d5e46f2773b4dbe68455c78f462a" defer></script>
+</head>
+<body>
+</body>
 </html>
