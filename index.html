@@ -13,28 +13,24 @@
     </style>
     <script>
       //Extract query params from url
-      function getParams(key) {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(key);
-      }
+     function getParams(key) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(key);
+     }
 
-      const name = getParams('name');
-      const email = getParams('email') || '';
+      const visitorName = getParams('name') || '';
+      const visitorEmail = getParams('email') || '';
       </script>
   </head>
   <body>
     <script>
       window.$zoho = window.$zoho || {};
       $zoho.salesiq = {
-        values: {
-          name: name,
-          email: email
-        },
         ready: function() {
+          $zoho.salesiq.visitor.name(visitorName);
+          $zoho.salesiq.visitor.email(visitorEmail);
           // Open chat automatically
-          $zoho.salesiq.visitor.trigger('chat');
-
-          
+          $zoho.salesiq.visitor.trigger('chat');         
         }
       };
     </script>
