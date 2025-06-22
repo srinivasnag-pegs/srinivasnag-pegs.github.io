@@ -9,12 +9,27 @@
       }
       .chat-iframe-wrap {
       	right: unset !important;
+      }
     </style>
+    <script>
+      //Extract query params from url
+      function getParams(key) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(key);
+      }
+
+      const name = getParams('name');
+      const email = getParams('email') || '';
+      </script>
   </head>
   <body>
     <script>
       window.$zoho = window.$zoho || {};
       $zoho.salesiq = {
+        values: {
+          name: name,
+          email: email
+        },
         ready: function() {
           // Open chat automatically
           $zoho.salesiq.visitor.trigger('chat');
