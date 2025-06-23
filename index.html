@@ -15,11 +15,12 @@
       //Extract query params from url
      function getParams(key) {
       const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(key);
+      const value = urlParams.get(key);
+      return value && value.trim() !== '' ? value : null;
      }
 
-      const visitorName = getParams('name') || '';
-      const visitorEmail = getParams('email') || '';
+      const visitorName = getParams('name');
+      const visitorEmail = getParams('email');
       </script>
   </head>
   <body>
@@ -27,8 +28,12 @@
       window.$zoho = window.$zoho || {};
       $zoho.salesiq = {
         ready: function() {
-          $zoho.salesiq.visitor.name(visitorName);
-          $zoho.salesiq.visitor.email(visitorEmail);
+          if (visitorName) {
+            $zoho.salesiq.visitor.name(visitorName);
+          }
+          if (visitorEmail) {
+            $zoho.salesiq.visitor.email(visitorEmail);
+          }
           // Open chat automatically
           $zoho.salesiq.visitor.trigger('chat');         
         }
