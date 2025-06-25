@@ -1,33 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head>
-     <style>
-      /* Hides the floating chat launcher button */
-      #zsiq_float {
-        display: none !important;
-      }
-      .chat-iframe-wrap {
-      	right: unset !important;
-      }
-    </style>
-   <!--   <script>
-      //Extract query params from url
-     function getParams(key) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(key);
-     }
+<head>
+<style>
+#zsiq_float {
+display: none !important;
+}
 
-      const visitorName = getParams('name') || '';
-      const visitorEmail = getParams('email') || '';
-      </script> -->
-  </head>
-  <body>
-    <script>
-      window.$zoho=window.$zoho || {};
-      $zoho.salesiq=$zoho.salesiq||{ready:function(){}}
-      </script>
-      <script id="zsiqscript" 
-      src="https://salesiq.zohopublic.eu/widget?wc=siq2edfadf216a22d33baeb5f5fae01a3c5ecd8283e9f4bf8ca562aa0c2c2c5bf1c6d91d5e46f2773b4dbe68455c78f462a" defer>
-    </script> 
-  </body>
-</html>
+</style>
+ <script>window.$zoho=window.$zoho || {};
+ $zoho.salesiq=$zoho.salesiq||{
+ ready:function(){
+ $zoho.salesiq.floatwindow.visible("show");
+ }}
+ </script>
+ <script id="zsiqscript" src="https://salesiq.zohopublic.eu/widget?wc=siq2edfadf216a22d33baeb5f5fae01a3c5ecd8283e9f4bf8ca562aa0c2c2c5bf1c6d91d5e46f2773b4dbe68455c78f462a" defer></script> 
+ </head>
+ </html>
